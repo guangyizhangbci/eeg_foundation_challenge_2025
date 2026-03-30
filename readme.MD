@@ -18,6 +18,7 @@ CBraMod-based EEG foundation model submitted to the **NeurIPS 2025 EEG Challenge
 | [Challenge 2](https://eeg2025.github.io/leaderboard/) | Final | 9th |
 
 Solo Competition. Ranked 3rd out of 110 teams (warm-up) and 9th out of 184 teams (challenge 2, final phase) in the NeurIPS 2025 EEG Challenge
+Competition Results: https://www.codabench.org/competitions/9975/#/results-tab
 
 
 > ⚠️ GPU-limited submission — V5/V6 and ensemble strategies were not fully explored.
