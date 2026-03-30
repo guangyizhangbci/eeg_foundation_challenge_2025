@@ -1,15 +1,35 @@
-Competition Results — NeurIPS 2025 EEG Challenge
-This repository contains our submission to the 2025 NeurIPS EEG Challenge, a competition with 1,183 participating teams and over 8,000 submissions on CodaBench.
+# CBraMod — NeurIPS 2025 EEG Challenge
 
-Challenge 1 (warm-up phase): Ranked 3rd out of all participants
-Challenge 2 (final phase): Ranked 9th
+> 🚧 **Work in progress**
 
+---
 
+## 🏆 Competition Results — [NeurIPS 2025 EEG Challenge](https://eeg2025.github.io)
 
-Model versions:
-V1: Baseline CBraMod with depthwise Conv2d positional encoding, Hann window + LayerNorm preprocessing, and simple magnitude+phase spectral projection. Shallow encoder (12 layers).
-V2: Deepened encoder to 24 layers and upgraded weight initialization to trunc_normal for linear layers. Otherwise identical architecture to V1.
-V3: Replaced depthwise Conv2d positional encoding with channel self-attention, enabling the model to learn inter-channel relationships. Switched spectral projection to explicit 51-bin rFFT (magnitude + phase).
-V4: Introduced EnhancedSpectralProjection with learnable EEG frequency band weights (Delta/Theta/Alpha/Beta/Gamma), PSD features, and separate mag/phase/power projections. Added gated spectral fusion (spectral_gate) and replaced zero mask encoding with a learned mask_token. Preprocessing switched from Hann window to MAD-based robust standardization for better cross-subject generalization.
-V5: Used EnhancedSpectralProjection without spectral gate. Increased attention heads to 10 in the encoder.
-V6: Added learnable temporal_pos_encoding to explicitly encode patch position in time. Replaced robust standardization with patch-level LayerNorm (time_norm). Retains gated spectral fusion and channel self-attention from V4.
+This repository contains our submission to the 2025 NeurIPS EEG Challenge, a competition with **1,183 teams** and over **8,000 submissions** on CodaBench.
+
+| Phase | Rank |
+|-------|------|
+| Challenge 1 (warm-up) | 🥉 **3rd** |
+| Challenge 2 (final) | **9th** |
+
+> Final standings were GPU-limited — further training of V5/V6 and ensemble strategies were left unexplored.
+
+---
+
+## 🧠 Model Versions
+
+| Version | Key Changes |
+|---------|-------------|
+| **V1** | Baseline CBraMod. Depthwise Conv2d positional encoding, Hann window + LayerNorm preprocessing, simple magnitude+phase spectral projection. Shallow encoder (12 layers). |
+| **V2** | Deepened encoder to 24 layers. Upgraded weight init to `trunc_normal` for linear layers. |
+| **V3** | Replaced Conv2d PE with **channel self-attention**, enabling learned inter-channel relationships. Explicit 51-bin rFFT spectral projection. |
+| **V4** | Introduced `EnhancedSpectralProjection` with learnable EEG band weights (δ/θ/α/β/γ), PSD features, and separate mag/phase/power projections. Added `spectral_gate` and learned `mask_token`. Preprocessing switched to **MAD-based robust standardization**. |
+| **V5** | `EnhancedSpectralProjection` without spectral gate. Increased encoder attention heads to 10. Adapted for 200 Hz data. |
+| **V6** | Added learnable `temporal_pos_encoding` for explicit patch-position encoding. Patch-level `LayerNorm` preprocessing. Retains gated spectral fusion and channel self-attention from V4. |
+
+---
+
+## 📚 Citation
+
+If you find this repository useful, please consider visiting my [Google Scholar](https://scholar.google.com/citations?user=ITguoVwAAAAJ&hl=en&oi=ao) and citing any relevant work — it means a lot!
