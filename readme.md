@@ -35,11 +35,19 @@ Ranked 3rd out of 110 teams (warm-up) and 9th out of 184 teams (challenge 2, fin
 │   ├── cbramod_v5.py
 │   └── cbramod_v6.py
 ├── datasets/
-├── pretrain_main.py
-├── pretrain_trainer.py
-├── finetune_main.py
-├── finetune_trainer_multir.py
-└── finetune_evaluator.py
+│   ├── challenge1_r5_dataset.py  % Warm-up dataset
+│   ├── challenge2_r5_dataset.py  % Warm-up dataset
+│   ├── challenge_1_dataset_cache_multir_.py   % Final dataset
+│   └── challenge_2_dataset_cache_multir_.py   % Final dataset
+├── pretrain/
+│   ├── main.py
+│   └── evaluator.py
+
+├── finetune/
+│   ├── main.py
+│   ├── evaluator.py
+│   └── trainer_multi.py
+
 ```
 
 ---
