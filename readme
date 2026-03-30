@@ -1,1 +1,9 @@
 
+
+Model versions:
+V1 — Baseline CBraMod with depthwise Conv2d positional encoding, Hann window + LayerNorm preprocessing, and simple magnitude+phase spectral projection. Shallow encoder (12 layers).
+V2 — Deepened encoder to 24 layers and upgraded weight initialization to trunc_normal for linear layers. Otherwise identical architecture to V1.
+V3 — Replaced depthwise Conv2d positional encoding with channel self-attention, enabling the model to learn inter-channel relationships. Switched spectral projection to explicit 51-bin rFFT (magnitude + phase).
+V4 — Introduced EnhancedSpectralProjection with learnable EEG frequency band weights (Delta/Theta/Alpha/Beta/Gamma), PSD features, and separate mag/phase/power projections. Added gated spectral fusion (spectral_gate) and replaced zero mask encoding with a learned mask_token. Preprocessing switched from Hann window to MAD-based robust standardization for better cross-subject generalization.
+V5 — Used EnhancedSpectralProjection without spectral gate. Increased attention heads to 10 in the encoder.
+V6 — Added learnable temporal_pos_encoding to explicitly encode patch position in time. Replaced robust standardization with patch-level LayerNorm (time_norm). Retains gated spectral fusion and channel self-attention from V4.
