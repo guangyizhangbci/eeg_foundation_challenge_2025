@@ -9,7 +9,7 @@ import torch
 from torch.nn import MSELoss
 from tqdm import tqdm
 
-from finetune_evaluator import Evaluator
+from evaluator import Evaluator
 from datasets import challenge_1_dataset_cache_multir_ as challenge_1_dataset
 from datasets import challenge_2_dataset_cache_multir_ as challenge_2_dataset
 
