@@ -81,4 +81,12 @@ Solo Competition. Ranked 3rd out of 110 teams (warm-up) and 9th out of 184 teams
 
 ## 📚 Citation
 
-If you find this repository useful, please visit my [Google Scholar](https://scholar.google.com/citations?user=ITguoVwAAAAJ&hl=en&oi=ao) and cite any relevant work — it really helps!
+If you find this repository useful, please visit my [Google Scholar](https://scholar.google.com/citations?user=ITguoVwAAAAJ&hl=en&oi=ao) and cite any relevant work, it really helps!
+
+## 📬 Contact
+
+If you have any questions, feel free to reach out at: patrickharvard2023@gmail.com
+
+
+
+
