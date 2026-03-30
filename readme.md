@@ -45,7 +45,7 @@ Ranked 3rd out of 110 teams (warm-up) and 9th out of 184 teams (challenge 2, fin
 ---
 
 ## 🔬 Model Versions
-
+The base repo: https://github.com/wjq-learning/CBraMod
 ### V1 - Baseline
 - Depthwise Conv2d positional encoding
 - Hann window + LayerNorm preprocessing
