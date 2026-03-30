@@ -42,7 +42,6 @@ Ranked 3rd out of 110 teams (warm-up) and 9th out of 184 teams (challenge 2, fin
 ├── pretrain/
 │   ├── main.py
 │   └── evaluator.py
-
 ├── finetune/
 │   ├── main.py
 │   ├── evaluator.py
