@@ -1,35 +1,101 @@
-# CBraMod — NeurIPS 2025 EEG Challenge
+# 🧠 CBraMod — NeurIPS 2025 EEG Challenge
 
-> 🚧 **Work in progress**
+> 🚧 Work in progress
 
----
-
-## 🏆 Competition Results — [NeurIPS 2025 EEG Challenge](https://eeg2025.github.io)
-
-This repository contains our submission to the 2025 NeurIPS EEG Challenge, a competition with **1,183 teams** and over **8,000 submissions** on CodaBench.
-
-| Phase | Rank |
-|-------|------|
-| Challenge 1 (warm-up) | 🥉 **3rd** |
-| Challenge 2 (final) | **9th** |
-
-> Final standings were GPU-limited — further training of V5/V6 and ensemble strategies were left unexplored.
+## 📌 Overview
+CBraMod-based EEG foundation model submitted to the **NeurIPS 2025 EEG Challenge** — 1,183 teams, 8,000+ submissions on CodaBench.
 
 ---
 
-## 🧠 Model Versions
+## 🏆 Results
 
-| Version | Key Changes |
-|---------|-------------|
-| **V1** | Baseline CBraMod. Depthwise Conv2d positional encoding, Hann window + LayerNorm preprocessing, simple magnitude+phase spectral projection. Shallow encoder (12 layers). |
-| **V2** | Deepened encoder to 24 layers. Upgraded weight init to `trunc_normal` for linear layers. |
-| **V3** | Replaced Conv2d PE with **channel self-attention**, enabling learned inter-channel relationships. Explicit 51-bin rFFT spectral projection. |
-| **V4** | Introduced `EnhancedSpectralProjection` with learnable EEG band weights (δ/θ/α/β/γ), PSD features, and separate mag/phase/power projections. Added `spectral_gate` and learned `mask_token`. Preprocessing switched to **MAD-based robust standardization**. |
-| **V5** | `EnhancedSpectralProjection` without spectral gate. Increased encoder attention heads to 10. Adapted for 200 Hz data. |
-| **V6** | Added learnable `temporal_pos_encoding` for explicit patch-position encoding. Patch-level `LayerNorm` preprocessing. Retains gated spectral fusion and channel self-attention from V4. |
+| Challenge | Phase | Rank |
+|-----------|-------|------|
+| [Challenge 1](https://eeg2025.github.io/leaderboard/) | Warm-up | 🥉 3rd |
+| [Challenge 2](https://eeg2025.github.io/leaderboard/) | Final | 9th |
+
+> ⚠️ GPU-limited submission — V5/V6 and ensemble strategies were not fully explored.
+
+---
+
+## 🗂️ Repository Structure
+```
+├── models/
+│   ├── cbramod_v1.py
+│   ├── cbramod_v2.py
+│   ├── cbramod_v3.py
+│   ├── cbramod_v4.py
+│   ├── cbramod_v5.py
+│   └── cbramod_v6.py
+├── datasets/
+├── pretrain_main.py
+├── pretrain_trainer.py
+├── finetune_main.py
+├── finetune_trainer_multir.py
+└── finetune_evaluator.py
+```
+
+---
+
+## 🔬 Model Versions
+
+<details>
+<summary><b>V1</b> — Baseline</summary>
+
+- Depthwise Conv2d positional encoding
+- Hann window + LayerNorm preprocessing
+- Simple magnitude + phase spectral projection
+- Shallow encoder (12 layers)
+
+</details>
+
+<details>
+<summary><b>V2</b> — Deeper Encoder</summary>
+
+- Encoder deepened to 24 layers
+- Upgraded to `trunc_normal` weight initialization
+
+</details>
+
+<details>
+<summary><b>V3</b> — Channel Self-Attention</summary>
+
+- Replaced Conv2d PE with channel self-attention
+- Explicit 51-bin rFFT spectral projection (magnitude + phase)
+
+</details>
+
+<details>
+<summary><b>V4</b> — Enhanced Spectral Encoding</summary>
+
+- `EnhancedSpectralProjection` with learnable band weights (δ/θ/α/β/γ)
+- Separate mag / phase / power projections
+- Gated spectral fusion (`spectral_gate`)
+- Learned `mask_token`
+- MAD-based robust standardization
+
+</details>
+
+<details>
+<summary><b>V5</b> — 200 Hz Adaptation</summary>
+
+- `EnhancedSpectralProjection` without spectral gate
+- 10 attention heads in encoder
+- Adapted for 200 Hz EEG data
+
+</details>
+
+<details>
+<summary><b>V6</b> — Temporal Positional Encoding</summary>
+
+- Learnable `temporal_pos_encoding`
+- Patch-level `LayerNorm` preprocessing
+- Retains gated spectral fusion and channel self-attention from V4
+
+</details>
 
 ---
 
 ## 📚 Citation
 
-If you find this repository useful, please consider visiting my [Google Scholar](https://scholar.google.com/citations?user=ITguoVwAAAAJ&hl=en&oi=ao) and citing any relevant work — it means a lot!
+If you find this repository useful, please visit my [Google Scholar](https://scholar.google.com/citations?user=ITguoVwAAAAJ&hl=en&oi=ao) and cite any relevant work — it really helps!
