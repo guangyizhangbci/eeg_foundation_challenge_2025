@@ -1,7 +1,5 @@
 # CBraMod-based EEG Foundation Model 
 
-> 🚧 Work in progress
-
 ---
 
 ## 📌 Overview
