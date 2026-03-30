@@ -11,7 +11,7 @@ from trainer_r5 import Trainer_r5
 
 import sys
 
-from models import model_for_challenge_1
+from models import model_for_challenge
 
 
 def main():
