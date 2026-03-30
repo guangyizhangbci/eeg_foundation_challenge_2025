@@ -14,7 +14,7 @@ CBraMod-based EEG foundation model submitted to the **NeurIPS 2025 EEG Challenge
 
 | Challenge | Phase | Rank |
 |-----------|-------|------|
-| [Challenge 1](https://eeg2025.github.io/leaderboard/) | Warm-up | 🥉 3rd |
+| [Challenges 1 & 2 ](https://eeg2025.github.io/leaderboard/) | Warm-up | 🥉 3rd |
 | [Challenge 2](https://eeg2025.github.io/leaderboard/) | Final | 9th |
 
 > ⚠️ GPU-limited submission — V5/V6 and ensemble strategies were not fully explored.
