@@ -4,7 +4,7 @@
 
 ## 📌 Overview
 
-CBraMod-based EEG foundation model submitted to the **[NeurIPS 2025 EEG Challenge] (https://eeg2025.github.io/)**. 1,183 participants, 8,000+ submissions on CodaBench.
+CBraMod-based EEG foundation model submitted to the **[NeurIPS 2025 EEG Challenge](https://eeg2025.github.io/)**. 1,183 participants, 8,000+ submissions on CodaBench.
 
 ---
 
