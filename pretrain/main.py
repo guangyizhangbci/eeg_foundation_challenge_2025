@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader, ConcatDataset
 from datasets.pretraining_dataset import PretrainingDataset
 from models.cbramod_enhanced import CBraMod
 
-from pretrain_trainer import Trainer
+from trainer import Trainer
 import json
 import os
 from datetime import datetime
