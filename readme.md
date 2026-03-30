@@ -79,6 +79,104 @@ The base repo: https://github.com/wjq-learning/CBraMod
 
 ---
 
+
+## 🚀 Pretraining
+python /pretrain/main.py [OPTIONS]
+
+### Example
+
+# Pretrain with 24-layer encoder
+python pretrain_main.py \
+  --n_layer 24 \
+  --batch_size 512
+
+### Options
+
+| Argument | Type | Default | Description |
+|----------|------|---------|-------------|
+| `--n_layer` | int | `12` | Number of transformer encoder layers |
+| `--batch_size` | int | `128` | Batch size |
+| `--epochs` | int | `100` | Number of pretraining epochs |
+| `--lr` | float | `2e-4` | Learning rate |
+| `--weight_decay` | float | `5e-2` | Weight decay |
+| `--clip_value` | float | `1.0` | Gradient clipping value |
+| `--d_model` | int | `100` | Model embedding dimension |
+| `--dim_feedforward` | int | `800` | Feedforward layer dimension |
+| `--nhead` | int | `4` | Number of attention heads |
+| `--seq_len` | int | `8` | Sequence length (number of patches) |
+| `--mask_ratio` | float | `0.5` | Ratio of patches to mask |
+| `--need_mask` | bool | `True` | Enable masked pretraining |
+| `--dropout` | float | `0.1` | Dropout rate |
+| `--lr_scheduler` | str | `CosineAnnealingLR` | LR scheduler (`CosineAnnealingLR`, `ExponentialLR`, `StepLR`, `MultiStepLR`, `CyclicLR`) |
+| `--model_dir` | str | `...foundation_ckpt` | Directory to save pretrained checkpoints |
+| `--seed` | int | `42` | Random seed |
+| `--cuda` | int | `0` | CUDA device index |
+| `--parallel` | bool | `False` | Enable multi-GPU training |
+
+
+## ⚙️ Finetune
+
+python /finetune/main.py [OPTIONS]
+
+### Example
+
+# Fine-tune V4 with pretrained weights (recommended)
+python finetune_main.py \
+  --downstream_dataset Challenge-1 \
+  --epochs 15 \
+  --use-selected-channels \
+  --use-cbramod-v4 \
+  --lr 3e-5 \
+  --dropout 0.4 \
+  --clip_value 1 \
+  --weight_decay 1e-4
+
+# Train V4 from scratch (no pretrained weights)
+python finetune_main.py \
+  --downstream_dataset Challenge-1 \
+  --epochs 10 \
+  --use-selected-channels \
+  --use-cbramod-v4 \
+  --lr 2e-4 \
+  --dropout 0.6 \
+  --clip_value 1 \
+  --weight_decay 1e-4 \
+  --use-pretrained-weights False
+  
+### Options
+
+| Argument | Type | Default | Description |
+|----------|------|---------|-------------|
+| `--downstream_dataset` | str | `Challenge-1` | Target dataset (`Challenge-1` or `Challenge-2`) |
+| `--epochs` | int | `5` | Number of training epochs |
+| `--lr` | float | `1e-4` | Learning rate |
+| `--weight_decay` | float | `5e-2` | Weight decay for optimizer |
+| `--dropout` | float | `0.1` | Dropout rate |
+| `--clip_value` | float | `1.0` | Gradient clipping value |
+| `--batch_size` | int | `64` | Batch size |
+| `--optimizer` | str | `AdamW` | Optimizer (`AdamW` or `SGD`) |
+| `--seed` | int | `3407` | Random seed |
+| `--num_workers` | int | `12` | DataLoader workers |
+| `--multi_lr` | bool | `True` | Different LR for backbone vs head |
+| `--frozen` | bool | `False` | Freeze backbone weights |
+| `--use-pretrained-weights` | bool | `True` | Load pretrained foundation weights |
+| `--use-selected-channels` | flag | `False` | Use 29 selected EEG channels instead of all 128 |
+| `--use-r-5-only` | flag | `False` | Train on R5 release only |
+| `--use-regression-norm` | flag | `False` | Normalize regression labels |
+| `--use-200hz` | flag | `False` | Use 200 Hz model variant |
+| `--use-small-model` | flag | `False` | Use small model variant |
+| `--use-cbramod-v1` | flag | `False` | Use CBraMod V1 |
+| `--use-cbramod-v2` | flag | `False` | Use CBraMod V2 |
+| `--use-cbramod-v3` | flag | `False` | Use CBraMod V3 |
+| `--use-cbramod-v4` | flag | `False` | Use CBraMod V4 |
+| `--use-cbramod-v5` | flag | `False` | Use CBraMod V5 |
+| `--use-cbramod-v6` | flag | `False` | Use CBraMod V6 |
+| `--model_dir` | str | `...ft_ckpt` | Directory to save model checkpoints |
+| `--foundation_dir` | str | `...100hz.pth` | Path to pretrained 100 Hz weights |
+| `--foundation_dir_200hz` | str | `...200hz.pth` | Path to pretrained 200 Hz weights |
+
+
+
 ## 📚 Citation
 
 If you find this repository useful, please visit my [Google Scholar](https://scholar.google.com/citations?user=ITguoVwAAAAJ&hl=en&oi=ao) and cite any relevant work, it really helps!
