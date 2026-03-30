@@ -85,7 +85,7 @@ python /pretrain/main.py [OPTIONS]
 
 ### Example
 
-# Pretrain with 24-layer encoder
+#### Pretrain with 24-layer encoder
 python pretrain_main.py \
   --n_layer 24 \
   --batch_size 512
@@ -120,7 +120,7 @@ python /finetune/main.py [OPTIONS]
 
 ### Example
 
-# Fine-tune V4 with pretrained weights (recommended)
+#### Fine-tune V4 with pretrained weights (recommended)
 python finetune_main.py \
   --downstream_dataset Challenge-1 \
   --epochs 15 \
@@ -131,7 +131,7 @@ python finetune_main.py \
   --clip_value 1 \
   --weight_decay 1e-4
 
-# Train V4 from scratch (no pretrained weights)
+#### Train V4 from scratch (no pretrained weights)
 python finetune_main.py \
   --downstream_dataset Challenge-1 \
   --epochs 10 \
