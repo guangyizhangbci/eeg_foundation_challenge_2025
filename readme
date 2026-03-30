@@ -43,66 +43,36 @@ CBraMod-based EEG foundation model submitted to the **NeurIPS 2025 EEG Challenge
 
 ## 🔬 Model Versions
 
-<details>
-<summary><b>V1 — Baseline</b></summary>
-<br>
-
+### V1 — Baseline
 - Depthwise Conv2d positional encoding
 - Hann window + LayerNorm preprocessing
 - Simple magnitude + phase spectral projection
 - Shallow encoder (12 layers)
 
-</details>
-
-<details>
-<summary><b>V2 — Deeper Encoder</b></summary>
-<br>
-
+### V2 — Deeper Encoder
 - Encoder deepened to 24 layers
 - Upgraded to `trunc_normal` weight initialization
 
-</details>
-
-<details>
-<summary><b>V3 — Channel Self-Attention</b></summary>
-<br>
-
+### V3 — Channel Self-Attention
 - Replaced Conv2d PE with channel self-attention
 - Explicit 51-bin rFFT spectral projection (magnitude + phase)
 
-</details>
-
-<details>
-<summary><b>V4 — Enhanced Spectral Encoding</b></summary>
-<br>
-
+### V4 — Enhanced Spectral Encoding
 - `EnhancedSpectralProjection` with learnable band weights (δ/θ/α/β/γ)
 - Separate mag / phase / power projections
 - Gated spectral fusion (`spectral_gate`)
 - Learned `mask_token`
 - MAD-based robust standardization
 
-</details>
-
-<details>
-<summary><b>V5 — 200 Hz Adaptation</b></summary>
-<br>
-
+### V5 — 200 Hz Adaptation
 - `EnhancedSpectralProjection` without spectral gate
 - 10 attention heads in encoder
 - Adapted for 200 Hz EEG data
 
-</details>
-
-<details>
-<summary><b>V6 — Temporal Positional Encoding</b></summary>
-<br>
-
+### V6 — Temporal Positional Encoding
 - Learnable `temporal_pos_encoding`
 - Patch-level `LayerNorm` preprocessing
 - Retains gated spectral fusion and channel self-attention from V4
-
-</details>
 
 ---
 
