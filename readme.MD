@@ -46,28 +46,28 @@ Solo Competition. Ranked 3rd out of 110 teams (warm-up) and 9th out of 184 teams
 
 ## 🔬 Model Versions
 
-### V1 — Baseline
+### V1 - Baseline
 - Depthwise Conv2d positional encoding
 - Hann window + LayerNorm preprocessing
 - Simple magnitude + phase spectral projection
 - Shallow encoder (12 layers)
 
-### V2 — Deeper Encoder
+### V2 - Deeper Encoder
 - Encoder deepened to 24 layers
 - Upgraded to `trunc_normal` weight initialization
 
-### V3 — Channel Self-Attention
+### V3 - Channel Self-Attention
 - Replaced Conv2d PE with channel self-attention
 - Explicit 51-bin rFFT spectral projection (magnitude + phase)
 
-### V4 — Enhanced Spectral Encoding
+### V4 - Enhanced Spectral Encoding
 - `EnhancedSpectralProjection` with learnable band weights (δ/θ/α/β/γ)
 - Separate mag / phase / power projections
 - Gated spectral fusion (`spectral_gate`)
 - Learned `mask_token`
 - MAD-based robust standardization
 
-### V5 — 200 Hz Adaptation
+### V5 - 200 Hz Adaptation
 - `EnhancedSpectralProjection` without spectral gate
 - 10 attention heads in encoder
 - Adapted for 200 Hz EEG data
