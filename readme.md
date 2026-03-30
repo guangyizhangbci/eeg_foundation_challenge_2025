@@ -79,7 +79,7 @@ The base repo: https://github.com/wjq-learning/CBraMod
 - 10 attention heads in encoder
 - Adapted for 200 Hz EEG data
 
-### V6 — Temporal Positional Encoding
+### V6 - Temporal Positional Encoding
 - Learnable `temporal_pos_encoding`
 - Patch-level `LayerNorm` preprocessing
 - Retains gated spectral fusion and channel self-attention from V4
